@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pyranch Developer Build - Userpage</title>
+</head>
+<body>
+	<img src="{{ user.icon_url }}">
+	<h1>{{ user.name }}</h1>
+	<h4>Lives in {{ user.country }}</h4>
+	<h4>Joined on {{ user.year }} {{ user.month }} {{ user.day }} at {{ user.time }}</h4>
+	<br><br>
+	<h2>About Me</h2>
+	{% for line in user.about_me.split("\n") %}
+		<h4>{{ line }}</h4>
+	{% endfor %}
+	<br><br>
+	<h2>What I'm Working On</h2>
+	{% for line in user.wiwo.split("\n") %}
+		<h4>{{ line }}</h4>
+	{% endfor %}
+	<br><br>
+	<h2>Followers ({{ user.follower_count }})
+	{% if user.follower_count > 20 %}
+		{% for follower in user.all_followers[:21] %}
+			<a href="http://127.0.0.1:5000/users/{{ follower.name }}">{{ follower.name }}</a>
+		{% endfor %}
+		<a href="http://127.0.0.1:5000/users/{{ user.name }}/followers">See All Followers</a>
+	{% else %}
+		{% for follower in user.all_followers %}
+			<a href="http://127.0.0.1:5000/users/{{ follower.name }}">{{ follower.name }}</a>
+		{% endfor %}
+	{% endif %}
+	<br><br>
+	<h2>Following ({{ user.following_count }})
+	{% if user.following_count > 20 %}
+		{% for following in user.all_following[:21] %}
+			<a href="http://127.0.0.1:5000/users/{{ following.name }}">{{ following.name }}</a>
+		{% endfor %}
+		<a href="http://127.0.0.1:5000/users/{{ user.name }}/following">See All Following</a>
+	{% else %}
+		{% for following in user.all_following %}
+			<a href="http://127.0.0.1:5000/users/{{ following.name }}">{{ following.name }}</a>
+		{% endfor %}
+	{% endif %}
+	<br><br>
+	<h2>Projects ({{ user.project_count }})</h2>
+	{% if not user.project_count > 3 %}
+		{% for project in user.all_projects %}
+			<div>
+			<img src="{{ project.thumbnail_url }}">
+			<h4>{{ project.title }}</h4>
+			{% if project.comments_allowed %}
+				<h4>You can comment on this project</h4>
+			{% else %}
+				<h4>You cannot comment on this project</h4>
+			{% endif %}
+			<h4>This project was created on {{ project.created }}</h4>
+			<h4>This project was shared on {{ project.share_date }}</h4>
+			<div>
+				<h4>This project has {{ project.views }} views</h4>
+				<h4>This project has {{ project.loves }} loves</h4>
+				<h4>This project has {{ project.favorites }} favorites</h4>
+				{% if not project.remix_count %}
+					<h4>This project has 0 remixes </h4>
+				{% else %}
+					<h4>This project has {{ project.remix_count }} remixes</h4>
+				{% endif %}
+			</div>
+		{% endfor %}
+	{% else %}
+		{% for project in user.all_projects[:3] %}
+			<div>
+			<img src="{{ project.thumbnail_url }}">
+			<h4>{{ project.title }}</h4>
+			{% if project.comments_allowed %}
+				<h4>You can comment on this project</h4>
+			{% else %}
+				<h4>You cannot comment on this project</h4>
+			{% endif %}
+			<h4>This project was created on {{ project.created }}</h4>
+			<h4>This project was shared on {{ project.share_date }}</h4>
+			<div>
+				<h4>This project has {{ project.views }} views</h4>
+				<h4>This project has {{ project.loves }} loves</h4>
+				<h4>This project has {{ project.favorites }} favorites</h4>
+				{% if not project.remix_count %}
+					<h4>This project has 0 remixes </h4>
+				{% else %}
+					<h4>This project has {{ project.remix_count }} remixes</h4>
+				{% endif %}
+			</div>
+		{% endfor %}
+		<a href="http://127.0.0.1:5000/users/{{ user.name }}/projects">Show All Projects</a>
+	{% endif %}
+	<br><br>
+	<h2>Comments ({{ user.comment_count }})</h2>
+	{% for comment in user.comments() %}
+		<div>
+		<h4>{{ comment["User"] }}: {{ comment["Content"] }}</h4>
+		{% if comment["hasReplies?"] %}
+			{% for reply in comment["Replies"] %}
+			<h4>---- {{ reply["User"] }}: {{ reply["Content"] }}</h4>
+			{% endfor %}
+		{% endif %}
+		</div>
+		<br>
+	{% endfor %}
+</body>
+</html>
