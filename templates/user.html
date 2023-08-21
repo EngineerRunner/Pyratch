@@ -2,12 +2,22 @@
 <html>
 <head>
 	<title>Pyranch Developer Build - Userpage</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 	<img src="{{ user.icon_url }}">
 	<h1>{{ user.name }}</h1>
 	<h4>Lives in {{ user.country }}</h4>
 	<h4>Joined on {{ user.year }} {{ user.month }} {{ user.day }} at {{ user.time }}</h4>
+	<h4>Has {{ user.message_count() }} messages</h4>
+	<h4>Has favorited {{ len(user.favorites()) }} projects</h4>
+	<h4>Is curating {{ len(user.studios()) }} studios</h4>
+	{% if user.scratchteam %}
+		<h4>Is a Scratch Team member</h4>
+	{% endif %}
+	<br><br>
+	<h2>Ocular Status</h2>
+	<h4>{{ user.ocular_status()["status"] }}</h4>
 	<br><br>
 	<h2>About Me</h2>
 	{% for line in user.about_me.split("\n") %}
@@ -95,11 +105,13 @@
 	<br><br>
 	<h2>Comments ({{ user.comment_count }})</h2>
 	{% for comment in user.comments() %}
-		<div>
+		<div class="comment">
 		<h4>{{ comment["User"] }}: {{ comment["Content"] }}</h4>
 		{% if comment["hasReplies?"] %}
 			{% for reply in comment["Replies"] %}
+			<div class="comment-reply">
 			<h4>---- {{ reply["User"] }}: {{ reply["Content"] }}</h4>
+			</div>
 			{% endfor %}
 		{% endif %}
 		</div>
