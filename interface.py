@@ -5,7 +5,7 @@ app = Flask(__name__)
 def user_load(username):
 	user=scr.get_user(username)
 	user.year = user.join_date.split("-")[0]
-	user.month = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}[int(user.join_date.split("-")[1][1:])]
+	user.month = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}[int(user.join_date.split("-")[1][1:] if len(user.join_date.split("-")[1]) == 1 else user.join_date.split("-")[1])]
 	user.day = user.join_date.split("-")[2].split("T")[0]
 	user.time = user.join_date.split("T")[1].split("Z")[0].split(".")[0]
 	user.all_followers = []
@@ -15,7 +15,7 @@ def user_load(username):
 		result = user.followers(offset=offset)
 		user.all_followers += result
 		offset += 40
-	user.follower_count = len(user.all_followers)
+	user.follower_count = user.stats()["followers"]
 	result = ["temp"]
 	user.all_following = []
 	offset = 0
@@ -23,7 +23,7 @@ def user_load(username):
 		result = user.following(offset=offset)
 		user.all_following += result
 		offset += 40
-	user.following_count = len(user.all_following)
+	user.following_count = user.stats()["following"]
 	try:
 		user.comment_count = len(user.comments())
 	except:
@@ -38,6 +38,11 @@ def user_load(username):
 	user.project_count = len(user.all_projects)
 	return user
 
+def project_load(id):
+	project=scr.get_project(str(id))
+	project.comment_count = len(project.comments())
+	return project
+
 @app.route("/")
 def root():
 	return render_template("root.html")
@@ -45,7 +50,7 @@ def root():
 @app.route("/users/<username>")
 def user(username):
 	user=user_load(username)
-	return render_template("user.html", user=user)
+	return render_template("user.html", user=user, len=len)
 
 @app.route("/users/<username>/followers")
 def user_followers(username):
@@ -61,6 +66,11 @@ def user_following(username):
 def user_projects(username):
 	user=user_load(username)
 	return render_template("user_projects.html", user=user)
+
+@app.route("/projects/<id>")
+def project(id):
+	project = project_load(id)
+	return render_template("project.html", project=project)
 
 
 if __name__ == "__main__":
