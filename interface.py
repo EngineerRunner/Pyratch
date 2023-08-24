@@ -39,7 +39,7 @@ def project_load(id):
 
 @app.route("/")
 def root():
-	return render_template("root.html", featured_projects=scr.featured_projects(), dark_mode=settings_manager.settings_json["dark-mode"])
+	return render_template("root.html", featured_projects=scratchattach.featured_projects(), dark_mode=settings_manager.settings_json["dark-mode"])
 
 @app.route("/users/<username>")
 def user(username):
