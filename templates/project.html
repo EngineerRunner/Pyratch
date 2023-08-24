@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Pyratch Developer Build - Projectpage</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 	{% if dark_mode %}
 		<link rel="stylesheet" href="{{ url_for('static', filename='styles-dark.css') }}">
 	{% else %}

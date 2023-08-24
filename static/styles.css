@@ -1,0 +1,22 @@
+body {
+	display: block;
+	margin: 8px;
+	max-width: 65ch;
+	line-height: 30px;
+	background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: sans-serif, serif;
+}
+
+h1 {
+	font-size: 2.2em;
+}
+
+a {
+  color: var(--link-color);
+}
+
+.comment {
+	border-style: solid;
+	background-color: var(--comment-color);
+}

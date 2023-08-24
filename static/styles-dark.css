@@ -1,43 +1,6 @@
-body {
-	display: block;
-	margin: 8px;
-	max-width: 65ch;
-	line-height: 30px;
-	background-color: black;
-}
-
-
-h1 {
-	color: white;
-	font-size: 2.2em;
-	font-family: sans-serif, serif;
-}
-h2 {
-	color: white;
-	font-family: sans-serif, serif;
-}
-
-h3 {
-	color: white;
-}
-
-a {
-	color: #c087fa;
-}
-
-h4 {
-	color: white;
-	font-family: sans-serif, serif;
-}
-
-label {
-	color: white;
-}
-
-.comment {
-	border-style: solid;
-	background-color: gray;
-}
-.comment-reply {
-	
+:root {
+  --background-color: black;
+  --text-color: white;
+  --link-color: #c087fa;
+  --comment-color: dimgray;
 }

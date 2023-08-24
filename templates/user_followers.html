@@ -2,7 +2,12 @@
 <html>
 <head>
 	<title>Pyratch Developer Build - User Followers</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	{% if dark_mode %}
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles-dark.css') }}">
+	{% else %}
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles-light.css') }}">
+	{% endif %}
 </head>
 <body>
 	<img src="{{ user.icon_url }}">
