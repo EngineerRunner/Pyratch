@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-import scratchattach
+import scratchattach as scr
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
@@ -24,7 +24,7 @@ class SettingsManager:
 settings_manager = SettingsManager()
 
 def user_load(username):
-	user = scratchattach.get_user(username)
+	user = scr.get_user(username)
 	return user, {
 		"join_date" : datetime.fromisoformat(user.join_date).strftime("%Y %B %d at %m:%S"),
 		"all_followers" : with_offset(user.followers),
@@ -34,12 +34,12 @@ def user_load(username):
 	}
 
 def project_load(id):
-	project=scratchattach.get_project(str(id))
+	project=scr.get_project(str(id))
 	return project, len(project.comments())
 
 @app.route("/")
 def root():
-	return render_template("root.html", featured_projects=scratchattach.featured_projects(), dark_mode=settings_manager.settings_json["dark-mode"])
+	return render_template("root.html", featured_projects=scr.featured_projects(), dark_mode=settings_manager.settings_json["dark-mode"])
 
 @app.route("/users/<username>")
 def user(username):
