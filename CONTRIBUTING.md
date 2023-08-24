@@ -46,18 +46,33 @@ You might not know where to start contributing, you can look at the issues for i
 
 ## 4. Name And Description
 Now that you have made your pull request, you likely want to know how to write the name and description.
+
 The name must be formatted as this:
+
 `version: desc`
+
 Here version is the version that you are commiting to, so if your code is for Developer Build 4 for example then say:
+
 `Developer Build 4: desc`
+
 You can also include Pyratch before hand but this is not required and could clutter up your name:
+
 `Pyratch Developer Build 4: desc`
+
 The description should be short and brief, it is recommended to start with an action like `update` or `create` then up to five more words describing the action further, here are some examples:
+
 `Developer Build 4: Updated userpage`
+
 `Developer Build 4: Rewrote functions to be faster`
+
 `Developer Build 4: Created studiopage`
+
 If your action doesn't belong to a version or is too general then you can prefix with General:
+
 `General: Added contributing guidelines`
+
 Or you can also just have no prefix but this might be confusing for some people:
+
 `Added contributing guidelines`
+
 If your code is complicated then of course this name alone will probably not describe your changes well so use the description then but it is recommended to have no description for simple pull requests
