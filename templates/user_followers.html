@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Pyranch Developer Build - User Followers</title>
+	<title>Pyratch Developer Build - User Followers</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 	<img src="{{ user.icon_url }}">
 	<h1>{{ user.name }}</h1>
 	<h4>Lives in {{ user.country }}</h4>
-	<h4>Joined on {{ user.year }} {{ user.month }} {{ user.day }} at {{ user.time }}</h4>
+	<h4>Joined on {{ info.join_date }}</h4>
 	<br><br>
-	<h2>Followers ({{ user.follower_count }})
-	{% for follower in user.all_followers %}
+	<h2>Followers ({{ user.follower_count() }})
+	{% for follower in info.all_followers %}
 		<a href="http://127.0.0.1:5000/users/{{ follower.name }}">{{ follower.name }}</a>
 	{% endfor %}
 </body>

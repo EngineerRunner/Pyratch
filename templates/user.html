@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Pyranch Developer Build - Userpage</title>
+	<title>Pyratch Developer Build - Userpage</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 	<img src="{{ user.icon_url }}">
 	<h1>{{ user.name }}</h1>
 	<h4>Lives in {{ user.country }}</h4>
-	<h4>Joined on {{ user.year }} {{ user.month }} {{ user.day }} at {{ user.time }}</h4>
+	<h4>Joined on {{ info.join_date }}</h4>
 	<h4>Has {{ user.message_count() }} messages</h4>
 	<h4>Has favorited {{ len(user.favorites()) }} projects</h4>
 	<h4>Is curating {{ len(user.studios()) }} studios</h4>
@@ -29,33 +29,33 @@
 		<h4>{{ line }}</h4>
 	{% endfor %}
 	<br><br>
-	<h2>Followers ({{ user.follower_count }})
-	{% if user.follower_count > 20 %}
-		{% for follower in user.all_followers[:21] %}
+	<h2>Followers ({{ user.follower_count() }})
+	{% if user.follower_count() > 20 %}
+		{% for follower in info.all_followers[:21] %}
 			<a href="http://127.0.0.1:5000/users/{{ follower.name }}">{{ follower.name }}</a>
 		{% endfor %}
 		<a href="http://127.0.0.1:5000/users/{{ user.name }}/followers">See All Followers</a>
 	{% else %}
-		{% for follower in user.all_followers %}
+		{% for follower in info.all_followers %}
 			<a href="http://127.0.0.1:5000/users/{{ follower.name }}">{{ follower.name }}</a>
 		{% endfor %}
 	{% endif %}
 	<br><br>
-	<h2>Following ({{ user.following_count }})
-	{% if user.following_count > 20 %}
-		{% for following in user.all_following[:21] %}
+	<h2>Following ({{ user.following_count() }})
+	{% if user.following_count() > 20 %}
+		{% for following in info.all_following[:21] %}
 			<a href="http://127.0.0.1:5000/users/{{ following.name }}">{{ following.name }}</a>
 		{% endfor %}
 		<a href="http://127.0.0.1:5000/users/{{ user.name }}/following">See All Following</a>
 	{% else %}
-		{% for following in user.all_following %}
+		{% for following in info.all_following %}
 			<a href="http://127.0.0.1:5000/users/{{ following.name }}">{{ following.name }}</a>
 		{% endfor %}
 	{% endif %}
 	<br><br>
-	<h2>Projects ({{ user.project_count }})</h2>
-	{% if not user.project_count > 3 %}
-		{% for project in user.all_projects %}
+	<h2>Projects ({{ user.project_count() }})</h2>
+	{% if not user.project_count() > 3 %}
+		{% for project in info.all_projects %}
 			<div>
 			<img src="{{ project.thumbnail_url }}">
 			<h4>{{ project.title }}</h4>
@@ -78,7 +78,7 @@
 			</div>
 		{% endfor %}
 	{% else %}
-		{% for project in user.all_projects[:3] %}
+		{% for project in info.all_projects[:3] %}
 			<div>
 			<img src="{{ project.thumbnail_url }}">
 			<h4>{{ project.title }}</h4>
@@ -103,7 +103,7 @@
 		<a href="http://127.0.0.1:5000/users/{{ user.name }}/projects">Show All Projects</a>
 	{% endif %}
 	<br><br>
-	<h2>Comments ({{ user.comment_count }})</h2>
+	<h2>Comments ({{ info.comment_count }})</h2>
 	{% for comment in user.comments() %}
 		<div class="comment">
 		<h4>{{ comment["User"] }}: {{ comment["Content"] }}</h4>
