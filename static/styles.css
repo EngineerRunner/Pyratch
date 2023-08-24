@@ -1,3 +1,17 @@
+:root {
+  --background-color: white;
+  --text-color: black;
+  --link-color: #0000ee;
+  --comment-color: darkgray;
+}
+
+.dark {
+  --background-color: black;
+  --text-color: white;
+  --link-color: #c087fa;
+  --comment-color: dimgray;
+}
+
 body {
 	display: block;
 	margin: 8px;
