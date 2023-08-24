@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Pyratch Developer Build 2</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<title>Pyratch Developer Build 3</title>
+	{% if dark_mode %}
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles-dark.css') }}">
+	{% else %}
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles-light.css') }}">
+	{% endif %}
 </head>
 <body>
 <h1>Welcome to Pyratch!</h1>
-<h3>This is a developer build of Pyratch which means that there will be a lot of bugs and it won't look like a finished stable version because it isn't, this is a developer build, in the future if you are reading this and if there has been a stable build then please update to that stable build.</h3>
+<h3>This is a developer build of Pyratch which means that there will be a lot of bugs and it won't look like a finished stable version because it isn't.</h3>
+<h3>This is a developer build, in the future if you are reading this and if there has been a stable build then please update to that stable build.</h3>
+<a href="/settings">Go To Settings</a>
 <br>
 <h2>Featured Scratchers</h2>
 <div>
@@ -29,4 +35,12 @@
 	<a href="http://127.0.0.1:5000/users/Paddle2See">Paddle2See</a>
 	<h4>A Scratch Team member who choose an interesting username</h4>
 </div>
+<br>
+<h2>Featured Projects</h2>
+{% for project in featured_projects %}
+<div>
+	<a href="http://127.0.0.1:5000/projects/{{ project.id }}">{{ project.title }}</a>
+	<h4>By {{ project.creator }}</h4>
+</div>
+{% endfor %}
 </html>
