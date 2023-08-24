@@ -34,11 +34,10 @@ git pull
 
 Otherwise, you'll have to redownload Pyratch.
 
-<!--
+
 ## Contributing
 
-Ideally, here would be a link to the contributing guidelines, these don't exist yet, though.
--->
+Contributions are welcome! Be sure to take a look at the [Contributing Guidelines](CONTRIBUTING.md).
 
 ## Feedback
 
