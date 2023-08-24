@@ -5,14 +5,14 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 def with_offset(function):
-    offset = 0
-    result = []
-    while True:
-        returned = function(offset=offset)
-        if not returned:
-            return result
-        result.extend(returned)
-        offset += 40
+	offset = 0
+	result = []
+	while True:
+		returned = function(offset=offset)
+		if not returned:
+			return result
+		result.extend(returned)
+		offset += 40
 
 class SettingsManager:
 	def __init__(self):
