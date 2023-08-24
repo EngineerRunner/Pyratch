@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pyranch Developer Build - Projectpage</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+	<img src="{{ project.thumbnail_url }}">
+	<h1>{{ project.title }}</h1>
+	<h2>By <a href="http://127.0.0.1:5000/users/{{ project.author }}">{{ project.author }}</a></h2>
+	{% if project.moderation_status() == "notsafe" %}
+		<h2>This project might not be suitable for some audiences, viewer discretion is advised</h2>
+	{% endif %}
+	<iframe src="https://scratch.mit.edu/projects/{{ project.id }}/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+	<br><br>
+	<h2>Instructions</h2>
+	<h4>{{ project.instructions }}</h4>
+	<br><br>
+	<h2>Notes And Credits</h2>
+	<h4>{{ project.notes }}</h4>
+</body>
+</html>
