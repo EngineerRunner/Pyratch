@@ -2,7 +2,11 @@
 <html>
 <head>
 	<title>Pyratch Developer Build - Projectpage</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	{% if dark_mode %}
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles-dark.css') }}">
+	{% else %}
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles-light.css') }}">
+	{% endif %}
 </head>
 <body>
 	<img src="{{ project.thumbnail_url }}">
@@ -11,7 +15,11 @@
 	{% if project.moderation_status() == "notsafe" %}
 		<h2>This project might not be suitable for some audiences, viewer discretion is advised</h2>
 	{% endif %}
-	<iframe src="https://scratch.mit.edu/projects/{{ project.id }}/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+	{% if turbowarp %}
+		<iframe src="https://turbowarp.org/{{ project.id }}/embed" width="485" height="402" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
+	{% else %}
+		<iframe src="https://scratch.mit.edu/projects/{{ project.id }}/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+	{% endif %}
 	<br><br>
 	<h2>Instructions</h2>
 	<h4>{{ project.instructions }}</h4>
