@@ -36,7 +36,7 @@
 {% for project in featured_projects %}
 <div>
 	<a href="http://127.0.0.1:5000/projects/{{ project.id }}">{{ project.title }}</a>
-	<h4>By {{ project.creator }}</h4>
+	<h4>By <a href="http://127.0.0.1:5000/users/{{ project.creator }}">{{ project.creator }}</a></h4>
 </div>
 {% endfor %}
 </html>
