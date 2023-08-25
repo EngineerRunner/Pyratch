@@ -29,8 +29,8 @@
 		<h4>{{ line }}</h4>
 	{% endfor %}
 	<br><br>
-	<h2>Followers ({{ user.follower_count() }})
-	{% if user.follower_count() > 20 %}
+	<h2>Followers ({{ len(info.all_followers) }})
+	{% if len(info.all_followers) > 20 %}
 		{% for follower in info.all_followers[:21] %}
 			<a href="http://127.0.0.1:5000/users/{{ follower.name }}">{{ follower.name }}</a>
 		{% endfor %}
@@ -41,8 +41,8 @@
 		{% endfor %}
 	{% endif %}
 	<br><br>
-	<h2>Following ({{ user.following_count() }})
-	{% if user.following_count() > 20 %}
+	<h2>Following ({{ len(info.all_following) }})
+	{% if len(info.all_following) > 20 %}
 		{% for following in info.all_following[:21] %}
 			<a href="http://127.0.0.1:5000/users/{{ following.name }}">{{ following.name }}</a>
 		{% endfor %}
@@ -53,8 +53,8 @@
 		{% endfor %}
 	{% endif %}
 	<br><br>
-	<h2>Projects ({{ user.project_count() }})</h2>
-	{% if not user.project_count() > 3 %}
+	<h2>Projects ({{ len(info.all_projects) }})</h2>
+	{% if not len(info.all_projects) > 3 %}
 		{% for project in info.all_projects %}
 			<div>
 			<img src="{{ project.thumbnail_url }}">
