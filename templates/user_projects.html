@@ -8,10 +8,10 @@
 	<img src="{{ user.icon_url }}">
 	<h1>{{ user.name }}</h1>
 	<h4>Lives in {{ user.country }}</h4>
-	<h4>Joined on {{ user.year }} {{ user.month }} {{ user.day }} at {{ user.time }}</h4>
+	<h4>Joined on {{ info.join_date }}</h4>
 	<br><br>
-	<h2>Projects ({{ user.project_count }})</h2>
-	{% for project in user.all_projects %}
+	<h2>Projects ({{ len(info.all_projects) }})</h2>
+	{% for project in info.all_projects %}
 		<div>
 		<img src="{{ project.thumbnail_url }}">
 		<h4>{{ project.title }}</h4>
