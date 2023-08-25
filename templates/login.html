@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html class="{{ 'dark' if dark_mode else '' }}">
+<head>
+    <title>Pyratch Developer Build - Login Page</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form action="/api/login" method="POST">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

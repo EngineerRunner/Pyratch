@@ -36,20 +36,20 @@ class SettingsManager:
 settings_manager = SettingsManager()
 
 def user_load(username):
-    user = scr.get_user(username)
-    join_date = datetime.fromisoformat(user.join_date).strftime("%Y %B %d at %m:%S")
-    all_followers = with_offset(user.followers)
-    all_following = with_offset(user.following)
-    comment_count = len(user.comments())
-    all_projects = with_offset(user.projects)
-    
-    return user, {
-        "join_date": join_date,
-        "all_followers": all_followers,
-        "all_following": all_following,
-        "comment_count": comment_count,
-        "all_projects": all_projects
-    }
+	user = scr.get_user(username)
+	join_date = datetime.fromisoformat(user.join_date[:-3]).strftime("%Y %B %d at %m:%S")
+	all_followers = with_offset(user.followers)
+	all_following = with_offset(user.following)
+	comment_count = len(user.comments())
+	all_projects = with_offset(user.projects)
+
+	return user, {
+		"join_date": join_date,
+		"all_followers": all_followers,
+		"all_following": all_following,
+		"comment_count": comment_count,
+		"all_projects": all_projects
+	}
 
 def project_load(id):
     project = scr.get_project(str(id))
@@ -99,6 +99,22 @@ def settings():
         return render_template("settings.html", success=True, dark_mode=settings_manager.settings_json["dark-mode"])
     else:
         return render_template("settings.html", success=False, dark_mode=settings_manager.settings_json["dark-mode"])
+
+@app.route("/api/login", methods=["POST"])
+def login():
+	username = request.form.get("username")
+	password = request.form.get("password")
+	user = scr.login(username, password)
+
+	# Serialize the join_date value in ISO 8601 format
+	join_date = user.join_date.isoformat()
+
+	return render_template("user.html", user=user, info=user_load(username), len=len, dark_mode=settings_manager.settings_json["dark-mode"])
+
+
+@app.route("/login", methods=["GET"])
+def login_get():
+	return render_template("login.html")
 
 if __name__ == "__main__":
   app.run(debug=True)
