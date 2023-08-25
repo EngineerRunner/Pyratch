@@ -70,7 +70,7 @@ def user_following(username):
 @app.route("/users/<username>/projects")
 def user_projects(username):
 	user, info = user_load(username)
-	return render_template("user_projects.html", user=user, info=info, dark_mode=settings_manager.settings_json["dark-mode"])
+	return render_template("user_projects.html", user=user, info=info, len=len, dark_mode=settings_manager.settings_json["dark-mode"])
 
 @app.route("/projects/<id>")
 def project(id):
