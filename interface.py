@@ -4,6 +4,11 @@ import scratchattach as scr
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
+DEFAULT_SETTINGS = {
+	"turbowarp-embed": False,
+	"dark-mode": False
+}
+
 def with_offset(function):
 	offset = 0
 	result = []
@@ -16,7 +21,13 @@ def with_offset(function):
 
 class SettingsManager:
 	def __init__(self):
-		self.settings_json = json.load(open("settings.json", "r"))
+		try:
+			with open("settings.json", "r") as settings_file:
+				self.settings_json = json.load(settings_file)
+		except FileNotFoundError:
+			self.settings_json = DEFAULT_SETTINGS
+			with open("settings.json", "w") as settings_file:
+				json.dump(DEFAULT_SETTINGS, settings_file)
 
 	def refresh_settings(self):
 		self.settings_json = json.load(open("settings.json", "r"))
