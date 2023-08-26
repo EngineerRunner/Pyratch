@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html class="{{ 'dark' if dark_mode else '' }}">
+    <head>
+        title>Pyratch Developer Build - Projectpage</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <h1>{{ studio.title }}</h1>
+        <img src="{{ studio.image_url }}">
+        <p>This studio has </p>{{ studio.project_count }}<p> Projects</p>
+        
+    </body>
+</html>
