@@ -5,23 +5,16 @@ Another frontend for Scratch.
 
 ### Installation
 
-1. Download Pyratch. You have 3 options
-   1.  Clone the repository using Git.
+1. Download Pyratch. You have 3 options.
+   1. **Preferred**: Use the [Pyratch Installer](https://github.com/GenericProgrammer1234/PyratchInstaller), follow the README there.
+   2.  Clone the repository using Git.
       ```sh
       git clone https://github.com/GenericProgrammer1234/Pyratch -b stable
       ```
-   2. 1. Navigate to the `stable` branch.
+   3. 1. Navigate to the `stable` branch.
       1. Click on the `<> Code` button.
       2. Click "Download Zip".
       3. Extract the zip file.
-
-   3.**Preferred**: 1.  Click  [this link](https://github.com/GenericProgrammer1234/PyratchInstaller/archive/refs/tags/pyratch-installer-for-unix-systems.zip) to download the installer.
-                    2.  Go to the installer's directory.
-                    3.  Run the file
-                        ```sh
-   
-                         python3 installler.py
-    ```
 3. Navigate to the folder.
 4. Install the dependencies. <!-- Update this when a requirements.txt file gets added -->
    ```sh
@@ -34,7 +27,7 @@ Another frontend for Scratch.
 
 ### Updating
 
-Git allows updating very easily. If you used `git clone` to install Pyratch, you can just run:
+Git allows updating very easily. If you used the Pyratch Installer or `git clone` to install Pyratch, you can just run:
 
 ```sh
 git pull
