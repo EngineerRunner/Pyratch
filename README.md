@@ -5,8 +5,8 @@ Another frontend for Scratch.
 
 ### Installation
 
-1. Download Pyratch. You have two options
-   1. **Preferred:** Clone the repository using Git.
+1. Download Pyratch. You have 3 options
+   1.  Clone the repository using Git.
       ```sh
       git clone https://github.com/GenericProgrammer1234/Pyratch -b stable
       ```
@@ -14,12 +14,20 @@ Another frontend for Scratch.
       1. Click on the `<> Code` button.
       2. Click "Download Zip".
       3. Extract the zip file.
-2. Navigate to the folder.
-3. Install the dependencies. <!-- Update this when a requirements.txt file gets added -->
+
+   3.**Preferred**: 1.  Click  [this link](https://github.com/GenericProgrammer1234/PyratchInstaller/archive/refs/tags/pyratch-installer-for-unix-systems.zip) to download the installer.
+                    2.  Go to the installer's directory.
+                    3.  Run the file
+                        ```sh
+   
+                         python3 installler.py
+    ```
+3. Navigate to the folder.
+4. Install the dependencies. <!-- Update this when a requirements.txt file gets added -->
    ```sh
    pip install flask scratchattach
    ```
-4. Run Pyratch!
+5. Run Pyratch!
    ```sh
    python interface.py
    ```
