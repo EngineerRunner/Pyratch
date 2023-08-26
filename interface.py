@@ -85,6 +85,10 @@ def project(id):
 	project, comment_count = project_load(id)
 	return render_template("project.html", project=project, comment_count=comment_count, dark_mode=settings_manager.settings_json["dark-mode"], turbowarp=settings_manager.settings_json["turbowarp-embed"])
 
+@app.route("/studios/<id>")
+def studio(id):
+	return render_template("project.html", dark_mode=settings_manager.settings_json["dark-mode"])
+
 @app.route("/settings", methods=["POST", "GET"])
 def settings():
     if request.method == "POST":
