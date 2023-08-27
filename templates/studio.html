@@ -1,13 +1,120 @@
 <!DOCTYPE html>
 <html class="{{ 'dark' if dark_mode else '' }}">
     <head>
-        title>Pyratch Developer Build - Projectpage</title>
+        <title>Pyratch Developer Build - Studiopage</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
+    	<img src="{{ studio.image_url }}">
         <h1>{{ studio.title }}</h1>
-        <img src="{{ studio.image_url }}">
-        <p>This studio has </p>{{ studio.project_count }}<p> Projects</p>
-        
-    </body>
+        <h2>By {{ info.host.name }}</h2>
+        {% if studio.open_to_all %}
+        	<h2>Everyone can add projects to this studio!</h2>
+        {% else %}
+        	<h2>Only curators and managers can add projects to this studio</h2>
+        {% endif %}
+        <br><br>
+        <h2>Projects ({{ studio.project_count }})</h2>
+        {% if not studio.project_count > 3 %}
+			{% for project in info.all_projects %}
+				<div>
+				<a href="/projects/{{ project.id }}"><img src="{{ project.thumbnail_url }}"></a>
+				<h4>{{ project.title }}</h4>
+				{% if project.comments_allowed %}
+					<h4>You can comment on this project</h4>
+				{% else %}
+					<h4>You cannot comment on this project</h4>
+				{% endif %}
+				<h4>This project was created on {{ project.created }}</h4>
+				<h4>This project was shared on {{ project.share_date }}</h4>
+				<div>
+					<h4>This project has {{ project.views }} views</h4>
+					<h4>This project has {{ project.loves }} loves</h4>
+					<h4>This project has {{ project.favorites }} favorites</h4>
+					{% if not project.remix_count %}
+						<h4>This project has 0 remixes </h4>
+					{% else %}
+						<h4>This project has {{ project.remix_count }} remixes</h4>
+					{% endif %}
+				</div>
+			{% endfor %}
+		{% else %}
+			{% for project in info.all_projects[:3] %}
+				<div>
+				<a href="/projects/{{ project.id }}"><img src="{{ project.thumbnail_url }}"></a>
+				<h4>{{ project.title }}</h4>
+				{% if project.comments_allowed %}
+					<h4>You can comment on this project</h4>
+				{% else %}
+					<h4>You cannot comment on this project</h4>
+				{% endif %}
+				<h4>This project was created on {{ project.created }}</h4>
+				<h4>This project was shared on {{ project.share_date }}</h4>
+				<div>
+					<h4>This project has {{ project.views }} views</h4>
+					<h4>This project has {{ project.loves }} loves</h4>
+					<h4>This project has {{ project.favorites }} favorites</h4>
+					{% if not project.remix_count %}
+						<h4>This project has 0 remixes </h4>
+					{% else %}
+						<h4>This project has {{ project.remix_count }} remixes</h4>
+					{% endif %}
+				</div>
+			{% endfor %}
+		<a href="http://127.0.0.1:5000/studios/{{ studio.id }}/projects">Show All Projects</a>
+	    {% endif %}
+	    <br><br>
+	    <h2>Managers ({{ len(info.all_managers) }})</h2>
+        <h2>Projects ({{ studio.project_count }})</h2>
+        {% if not studio.project_count > 3 %}
+			{% for project in info.all_projects %}
+				<div>
+				<a href="/projects/{{ project.id }}"><img src="{{ project.thumbnail_url }}"></a>
+				<h4>{{ project.title }}</h4>
+				{% if project.comments_allowed %}
+					<h4>You can comment on this project</h4>
+				{% else %}
+					<h4>You cannot comment on this project</h4>
+				{% endif %}
+				<h4>This project was created on {{ project.created }}</h4>
+				<h4>This project was shared on {{ project.share_date }}</h4>
+				<div>
+					<h4>This project has {{ project.views }} views</h4>
+					<h4>This project has {{ project.loves }} loves</h4>
+					<h4>This project has {{ project.favorites }} favorites</h4>
+					{% if not project.remix_count %}
+						<h4>This project has 0 remixes </h4>
+					{% else %}
+						<h4>This project has {{ project.remix_count }} remixes</h4>
+					{% endif %}
+				</div>
+			{% endfor %}
+		{% else %}
+			{% for project in info.all_projects[:3] %}
+				<div>
+				<a href="/projects/{{ project.id }}"><img src="{{ project.thumbnail_url }}"></a>
+				<h4>{{ project.title }}</h4>
+				{% if project.comments_allowed %}
+					<h4>You can comment on this project</h4>
+				{% else %}
+					<h4>You cannot comment on this project</h4>
+				{% endif %}
+				<h4>This project was created on {{ project.created }}</h4>
+				<h4>This project was shared on {{ project.share_date }}</h4>
+				<div>
+					<h4>This project has {{ project.views }} views</h4>
+					<h4>This project has {{ project.loves }} loves</h4>
+					<h4>This project has {{ project.favorites }} favorites</h4>
+					{% if not project.remix_count %}
+						<h4>This project has 0 remixes </h4>
+					{% else %}
+						<h4>This project has {{ project.remix_count }} remixes</h4>
+					{% endif %}
+				</div>
+			{% endfor %}
+		<a href="http://127.0.0.1:5000/studios/{{ studio.id }}/projects">Show All Projects</a>
+	    {% endif %}
+	    <br><br>
+	    <h2>Curators ({{ len(info.all_curators) }})
+	</body>
 </html>
