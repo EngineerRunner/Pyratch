@@ -51,10 +51,44 @@ def user_load(username):
         "all_projects": all_projects
     }
 
+def user_load_user(given_user):
+    user = given_user
+    join_date = datetime.fromisoformat(user.join_date).strftime("%Y %B %d at %m:%S")
+    all_followers = with_offset(user.followers)
+    all_following = with_offset(user.following)
+    comment_count = len(user.comments())
+    all_projects = with_offset(user.projects)
+    
+    return user, {
+        "join_date": join_date,
+        "all_followers": all_followers,
+        "all_following": all_following,
+        "comment_count": comment_count,
+        "all_projects": all_projects
+    }
+
 def project_load(id):
     project = scr.get_project(str(id))
     num_comments = len(project.comments())
     return project, num_comments
+
+def studio_load(id):
+    studio = scr.get_studio(str(id))
+
+    host, host_info = user_load_user(studio.managers(limit=1)[0])
+    all_projects = with_offset(studio.projects)
+    for idx, project in enumerate(all_projects):
+        all_projects[idx] = scr.get_project(project["id"])
+    all_curators = with_offset(studio.curators)
+    all_managers = with_offset(studio.managers)
+
+    return studio, {
+        "host": host,
+        "host_info": host_info,
+        "all_projects": all_projects,
+        "all_curators": all_curators,
+        "all_managers": all_managers
+    }
 
 @app.route("/")
 def root():
@@ -84,6 +118,11 @@ def user_projects(username):
 def project(id):
 	project, comment_count = project_load(id)
 	return render_template("project.html", project=project, comment_count=comment_count, dark_mode=settings_manager.settings_json["dark-mode"], turbowarp=settings_manager.settings_json["turbowarp-embed"])
+
+@app.route("/studios/<id>")
+def studio(id):
+    studio, info = studio_load(id)
+    return render_template("studio.html", studio=studio, dark_mode=settings_manager.settings_json["dark-mode"], info=info, len=len)
 
 @app.route("/settings", methods=["POST", "GET"])
 def settings():
