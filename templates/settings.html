@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html class="{{ 'dark' if dark_mode else '' }}">
 <head>
 	<title>Pyratch Developer Build - Settings</title>
-	{% if dark_mode %}
-		<link rel="stylesheet" href="{{ url_for('static', filename='styles-dark.css') }}">
-	{% else %}
-		<link rel="stylesheet" href="{{ url_for('static', filename='styles-light.css') }}">
-	{% endif %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <form method="POST">
   <div>

@@ -1,5 +1,45 @@
 # Pyratch
 Another frontend for Scratch.
-Whence you have downloaded the repo, go into the repo's folder. Then type the following command.
-`python interface.py`
-It should work.
+
+## Usage
+
+### Installation
+
+1. Download Pyratch. You have 3 options.
+   1. **Preferred**: Use the [Pyratch Installer](https://github.com/GenericProgrammer1234/PyratchInstaller), follow the README there.
+   2.  Clone the repository using Git.
+      ```sh
+      git clone https://github.com/GenericProgrammer1234/Pyratch -b stable
+      ```
+   3. 1. Navigate to the `stable` branch.
+      1. Click on the `<> Code` button.
+      2. Click "Download Zip".
+      3. Extract the zip file.
+3. Navigate to the folder.
+4. Install the dependencies. <!-- Update this when a requirements.txt file gets added -->
+   ```sh
+   pip install flask scratchattach
+   ```
+5. Run Pyratch!
+   ```sh
+   python interface.py
+   ```
+
+### Updating
+
+Git allows updating very easily. If you used the Pyratch Installer or `git clone` to install Pyratch, you can just run:
+
+```sh
+git pull
+```
+
+Otherwise, you'll have to redownload Pyratch.
+
+
+## Contributing
+
+Contributions are welcome! Be sure to take a look at the [Contributing Guidelines](CONTRIBUTING.md).
+
+## Feedback
+
+If you have a suggestion, something isn't working, or have other feedback, don't hesitate to reach out via [the forum topic](https://scratch.mit.edu/discuss/topic/705619/)!

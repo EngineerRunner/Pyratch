@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html class="{{ 'dark' if dark_mode else '' }}">
 <head>
 	<title>Pyratch Developer Build 3</title>
-	{% if dark_mode %}
-		<link rel="stylesheet" href="{{ url_for('static', filename='styles-dark.css') }}">
-	{% else %}
-		<link rel="stylesheet" href="{{ url_for('static', filename='styles-light.css') }}">
-	{% endif %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 <h1>Welcome to Pyratch!</h1>
@@ -40,7 +36,7 @@
 {% for project in featured_projects %}
 <div>
 	<a href="http://127.0.0.1:5000/projects/{{ project.id }}">{{ project.title }}</a>
-	<h4>By {{ project.creator }}</h4>
+	<h4>By <a href="http://127.0.0.1:5000/users/{{ project.creator }}">{{ project.creator }}</a></h4>
 </div>
 {% endfor %}
 </html>

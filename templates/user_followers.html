@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html class="{{ 'dark' if dark_mode else '' }}">
 <head>
 	<title>Pyratch Developer Build - User Followers</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 	<img src="{{ user.icon_url }}">
