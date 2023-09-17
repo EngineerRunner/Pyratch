@@ -27,7 +27,7 @@ Another frontend for Scratch.
 
 ### Updating
 
-Git allows updating very easily. If you used the Pyratch Installer or `git clone` to install Pyratch, you can just run:
+Git allows updating very easily. If you used the Pyratch Installer or `git clone` to install Pyratch, you can just go navigate to the directory Pyratch is stored in and run:
 
 ```sh
 git pull
@@ -42,4 +42,4 @@ Contributions are welcome! Be sure to take a look at the [Contributing Guideline
 
 ## Feedback
 
-If you have a suggestion, something isn't working, or have other feedback, don't hesitate to reach out via [the forum topic](https://scratch.mit.edu/discuss/topic/705619/)!
+If you have a suggestion, something isn't working, or have other feedback, don't hesitate to reach out via [the forum topic](https://scratch.mit.edu/discuss/topic/708617/)!
