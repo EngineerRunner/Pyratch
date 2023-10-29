@@ -13,10 +13,11 @@ This will be split into a few sections:
 
 ## 1. Get Started
 **Notice: You will need experience with the following things:**
-**1. Python**
-**2. Flask**
-**3. Scratchattach**
-**4. Jinja**
+
+**1. Python**<br>
+**2. Flask**<br>
+**3. Scratchattach**<br>
+**4. Jinja**<br>
 
 To get started first download Pyratch of course by following the installation guide.
 
@@ -33,6 +34,7 @@ You might not know where to start contributing, you can look at the issues for i
 1. Bug fixes and resolving issues
 2. Adding suggestions and features
 3. Making quality-of-life improvements
+
 **We do not accept the following code though:**
 1. Purely cosmetic changes
 2. Changes that wouldn't generally be useful to anyone except you
