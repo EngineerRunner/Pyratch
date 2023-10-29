@@ -1,5 +1,5 @@
 # Pyratch
-Another frontend for Scratch. (originally by GenericProgrammer1234)
+Another frontend for Scratch.
 
 ## Usage
 
@@ -42,4 +42,8 @@ Contributions are welcome! Be sure to take a look at the [Contributing Guideline
 
 ## Feedback
 
-If you have a suggestion, something isn't working, or have other feedback, don't hesitate to reach out via [the forum topic](https://scratch.mit.edu/discuss/topic/708617/)!
+If you have a suggestion, something isn't working, or have other feedback, don't hesitate to reach out via [the forum topic](https://scratch.mit.edu/discuss/topic/708617/)!   
+
+## Special Thanks
+
+Thank you to @GenericProgrammer1234, who originally created Pyratch.
