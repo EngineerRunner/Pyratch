@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-import scratchattach as scr
+import scratchattach
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
@@ -36,7 +36,7 @@ class SettingsManager:
 settings_manager = SettingsManager()
 
 def user_load(username):
-    user = scr.get_user(username)
+    user = scratchattach.get_user(username)
     join_date = datetime.fromisoformat(user.join_date).strftime("%Y %B %d at %m:%S")
     all_followers = with_offset(user.followers)
     all_following = with_offset(user.following)
@@ -68,17 +68,17 @@ def user_load_user(given_user):
     }
 
 def project_load(id):
-    project = scr.get_project(str(id))
+    project = scratchattach.get_project(str(id))
     num_comments = len(project.comments())
     return project, num_comments
 
 def studio_load(id):
-    studio = scr.get_studio(str(id))
+    studio = scratchattach.get_studio(str(id))
 
     host, host_info = user_load_user(studio.managers(limit=1)[0])
     all_projects = with_offset(studio.projects)
     for idx, project in enumerate(all_projects):
-        all_projects[idx] = scr.get_project(project["id"])
+        all_projects[idx] = scratchattach.get_project(project["id"])
     all_curators = with_offset(studio.curators)
     all_managers = with_offset(studio.managers)
 
@@ -92,7 +92,7 @@ def studio_load(id):
 
 @app.route("/")
 def root():
-	return render_template("root.html", featured_projects=scr.featured_projects(), dark_mode=settings_manager.settings_json["dark-mode"])
+	return render_template("root.html", featured_projects=scratchattach.featured_projects(), dark_mode=settings_manager.settings_json["dark-mode"])
 
 @app.route("/users/<username>")
 def user(username):
