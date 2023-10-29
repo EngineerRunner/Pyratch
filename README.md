@@ -1,5 +1,5 @@
 # Pyratch
-Another frontend for Scratch.
+Another frontend for Scratch. (originally by GenericProgrammer1234)
 
 ## Usage
 
