@@ -11,10 +11,8 @@ Another frontend for Scratch.
       ```sh
       git clone https://github.com/GenericProgrammer1234/Pyratch -b stable
       ```
-   3. 1. Navigate to the `stable` branch.
-      1. Click on the `<> Code` button.
-      2. Click "Download Zip".
-      3. Extract the zip file.
+   3. 1. [Download the .zip file with this link](https://github.com/EngineerRunner/Pyratch/archive/refs/heads/stable.zip)
+      2. Extract the zip file.
 3. Navigate to the folder.
 4. Install the dependencies. <!-- Update this when a requirements.txt file gets added -->
    ```sh
